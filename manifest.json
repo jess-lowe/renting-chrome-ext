@@ -1,0 +1,38 @@
+{
+  "name": "Flatting Budget",
+  "version": "1.0",
+  "manifest_version": 3,
+  "minimum_chrome_version": "120",
+  "description": "Uses the chrome.userScripts API to inject JavaScript into web pages.",
+  "background": {
+    "service_worker": "sw.js",
+    "type": "module"
+  },
+  "permissions": [
+    "storage",
+    "userScripts",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://example.com/*",
+    "https://*.domain.com.au/*"
+  ],
+  "action": {
+    "default_popup": "options.html"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.domain.com.au/*"
+      ],
+      "js": [
+        "domain.js"
+      ]
+    }
+  ]
+}
