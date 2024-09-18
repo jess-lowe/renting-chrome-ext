@@ -24,12 +24,12 @@ chrome.action.onClicked.addListener((tab) => {
     files: ["domain.js"],
   });
 });
-chrome.tabs.onUpdated.addListener((tabId, changeInfo) => {
-  if (changeInfo.url) {
-    console.log("changeInfo.url", changeInfo.url);
-    chrome.scripting.executeScript({
-      target: { tabId: tabId },
-      files: ["domain.js"],
-    });
-  }
-});
+// chrome.tabs.onUpdated.addListener((tabId, changeInfo) => {
+//   if (changeInfo.url) {
+//     console.log("changeInfo.url", changeInfo.url);
+//     chrome.scripting.executeScript({
+//       target: { tabId: tabId },
+//       files: ["domain.js"],
+//     });
+//   }
+// });

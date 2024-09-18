@@ -20,19 +20,6 @@ const FORM = document.getElementById(FORM_ID);
 const IDEAL = document.getElementById(TYPE_IDEAL_BUDGET);
 const HARD_LIMIT = document.getElementById(TYPE_HARD_LIMIT);
 
-// async function initializeSettings() {
-//   chrome.storage.sync.set(
-//     { ideal: IDEAL.value, hard_limit: HARD_LIMIT.value },
-//     function () {
-//       console.log("Data saved" + IDEAL.value + HARD_LIMIT.value);
-//     }
-//   );
-//   // chrome.storage.local.set({
-//   //   ideal: IDEAL.value,
-//   //   hard_limit: HARD_LIMIT.value,
-//   // });
-// }
-
 async function updateUi() {
   // To retrieve data
   chrome.storage.sync.get(["ideal"], function (result) {
@@ -53,33 +40,12 @@ async function updateUi() {
       console.log("Data retrieved:", result.hard_limit);
     }
   });
-
-  // IDEAL.value = ideal;
-
-  // const hard_limit = chrome.storage.sync.get(
-  //   TYPE_HARD_LIMIT,
-  //   function (result) {
-  //     if (result.key == undefined) {
-  //       return 1000;
-  //     }
-  //     console.log("Data retrieved:", result.key);
-  //   }
-  // );
-
-  // Update UI with current values.
-  // HARD_LIMIT.value = hard_limit;
 }
 
 async function onSave() {
-  // chrome.storage.sync.set(
-  //   { ideal: IDEAL.value, hard_limit: HARD_LIMIT.value },
-  //   function () {
-  //     console.log("Data saved" + IDEAL.value + HARD_LIMIT.value);
-  //   }
-  // );
-  const ideal = IDEAL.value;
+  const ideal = parseInt(IDEAL.value);
   console.log(ideal);
-  const hard_limit = HARD_LIMIT.value;
+  const hard_limit = parseInt(HARD_LIMIT.value);
   console.log(hard_limit);
   // To save data
   chrome.storage.sync.set({ ideal: ideal, hard_limit: hard_limit }, () => {

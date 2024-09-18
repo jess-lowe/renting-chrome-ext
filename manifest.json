@@ -16,7 +16,8 @@
   ],
   "host_permissions": [
     "https://example.com/*",
-    "https://*.domain.com.au/*"
+    "https://*.domain.com.au/*",
+    "https://*.trademe.co.nz/*"
   ],
   "action": {
     "default_popup": "options.html"
@@ -28,7 +29,8 @@
   "content_scripts": [
     {
       "matches": [
-        "https://*.domain.com.au/*"
+        "https://*.domain.com.au/*",
+        "https://*.trademe.co.nz/*"
       ],
       "js": [
         "domain.js"
