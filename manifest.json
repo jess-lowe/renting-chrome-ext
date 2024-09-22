@@ -33,7 +33,7 @@
         "https://*.trademe.co.nz/*"
       ],
       "js": [
-        "domain.js"
+        "script.js"
       ]
     }
   ]
