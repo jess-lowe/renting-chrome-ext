@@ -23,7 +23,7 @@ Promise.all([getIdeal, getHardLimit]).then(
 
     switch (true) {
       case window.location.href.includes("trademe"):
-        rent = document.getElementsByClassName(
+        p = document.getElementsByClassName(
           "tm-property-search-card-price-attribute__price"
         );
         rooms = document.getElementsByName("bedroom");
@@ -43,7 +43,12 @@ Promise.all([getIdeal, getHardLimit]).then(
               mutation.addedNodes.length > 0
             ) {
               if (!isUpdating) {
-                updateElements(rent, bedrooms);
+                rooms = document.getElementsByName("bedroom");
+                bedrooms = [];
+                for (room of rooms) {
+                  bedrooms.push(parseInt(room.nextSibling.innerText));
+                }
+                updateElements(p, bedrooms);
               }
             }
           });
@@ -51,7 +56,7 @@ Promise.all([getIdeal, getHardLimit]).then(
         const configTradeMe = { childList: true, subtree: true };
         observerTradeMe.observe(targetNode, configTradeMe);
 
-        updateElements(rent, bedrooms);
+        updateElements(p, bedrooms);
         break;
 
       case window.location.href.includes("domain"):
@@ -69,6 +74,11 @@ Promise.all([getIdeal, getHardLimit]).then(
               mutation.addedNodes.length > 0
             ) {
               if (!isUpdating) {
+                r = document.getElementsByClassName("css-18biwo");
+                rooms = [];
+                for (i = 0; i < r.length; i++) {
+                  rooms.push(parseInt(r[i].children[0].innerText[0]) || 1);
+                }
                 updateElements(p, rooms);
               }
             }
