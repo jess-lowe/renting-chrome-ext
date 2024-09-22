@@ -21,7 +21,7 @@ chrome.runtime.onInstalled.addListener(({ reason }) => {
 chrome.action.onClicked.addListener((tab) => {
   chrome.scripting.executeScript({
     target: { tabId: tab.id },
-    files: ["domain.js"],
+    files: ["script.js"],
   });
 });
 // chrome.tabs.onUpdated.addListener((tabId, changeInfo) => {
@@ -29,7 +29,7 @@ chrome.action.onClicked.addListener((tab) => {
 //     console.log("changeInfo.url", changeInfo.url);
 //     chrome.scripting.executeScript({
 //       target: { tabId: tabId },
-//       files: ["domain.js"],
+//       files: ["script.js"],
 //     });
 //   }
 // });
