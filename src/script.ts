@@ -27,6 +27,7 @@ Promise.all([getIdeal, getHardLimit]).then(([ideal, hard]) => {
   let isUpdating = false;
 
   const updateFn = () => {
+    console.log("Updating");
     if (isUpdating) {
       return;
     }
@@ -35,7 +36,7 @@ Promise.all([getIdeal, getHardLimit]).then(([ideal, hard]) => {
 
     site
       .getElements()
-      .filter(({ priceElement }) => priceElement.classList.contains("done"))
+      .filter(({ priceElement }) => !priceElement.classList.contains("done"))
       .forEach((data) => {
         updatePrice({ ideal, hard, data });
         data.priceElement.classList.add("done");
@@ -58,6 +59,7 @@ const updatePrice = ({
   data: SiteData;
 }) => {
   let pricePerBedroom = parseInt((price / rooms).toFixed(0));
+  console.log(priceElement);
   var styledPPB = '<em style="color:purple">$' + pricePerBedroom;
 
   if (pricePerBedroom >= hard) {
