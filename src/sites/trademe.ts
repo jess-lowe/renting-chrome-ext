@@ -3,7 +3,9 @@ import { Site } from "./site";
 const parsePrice = (price: string) => {
   price = price.split(" ")[0];
   price = price.replace("$", "");
-
+  if (price.includes(",")) {
+    price = price.replace(",", "");
+  }
   return parseInt(price);
 };
 
