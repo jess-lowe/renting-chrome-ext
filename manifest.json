@@ -5,15 +5,10 @@
   "minimum_chrome_version": "120",
   "description": "Uses the chrome.userScripts API to inject JavaScript into web pages.",
   "background": {
-    "service_worker": "sw.js",
+    "service_worker": "dist/sw.js",
     "type": "module"
   },
-  "permissions": [
-    "storage",
-    "userScripts",
-    "activeTab",
-    "scripting"
-  ],
+  "permissions": ["storage", "userScripts", "activeTab", "scripting"],
   "host_permissions": [
     "https://example.com/*",
     "https://*.domain.com.au/*",
@@ -28,13 +23,8 @@
   },
   "content_scripts": [
     {
-      "matches": [
-        "https://*.domain.com.au/*",
-        "https://*.trademe.co.nz/*"
-      ],
-      "js": [
-        "script.js"
-      ]
+      "matches": ["https://*.domain.com.au/*", "https://*.trademe.co.nz/*"],
+      "js": ["dist/script.js"]
     }
   ]
 }
